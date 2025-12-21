@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon.ico" type ="image/x-icon"> 
+    <title>Ngoc Diep's Portfolio</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="glass-container">
+            <nav class="navbar">
+                <div class="logo"><a href="#">Ngoc Diep's Projects</a></div>
+                    <ul class="nav-links">
+                        <li class="nav-link">
+                            <button id="themeToggle" class="theme-btn">
+                                <img id="themeIcon" src="toggle_off.png" alt="theme icon">
+                            </button>
+                        </li>
+                        <li class="nav-link"><a href="">Home</a></li>
+                        <li class="nav-link"><a href="https://github.com/ngdip2409">Github</a></li>
+                        <li class="nav-link"><a href="#">Projects</a></li>
+                    </ul>
+            </nav>
+
+            <div class="content">
+                <div class="main">
+                    <h2>Hi 👋,<br>Welcome to my page!</h2>
+                    <p>
+                        Page này dùng để lưu trữ những code mà mình đã làm,
+                        mọi sai sót rất hoan nghênh mọi người góp ý! ❤️
+                    </p>
+                    <button id="startBtn">Get Started</button>
+                    <br><br>
+
+                    <h2 id ="projectSection">Các project mà mình đã làm</h2>
+                    <div class="project-grid">
+                      <a href ="./visa_card/index.html" class="project-visacard">Visa Card</a>
+                      <a href="#" class ="project-card"> Project 2 (upcoming)</a>
+                      <a href="#" class ="project-card"> Project 3 (upcoming)</a>
+                      <a href="#" class ="project-card"> Project 4 (upcoming)</a>
+                    </div>  
+                </div>
+
+                <div class="image-wrapper">
+                    <img src="image.png">
+                    <div class="attrebute">
+                        <a
+                            href="https://www.freepik.com/free-psd/marketing-concept-with-woman-rocketship_33417710.htm#page=2&query=3d%20illustration&position=32&from_view=search&track=ais">Image
+                            by Freepik</a>
+                    </div>
+                </div>         
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // Scroll
+    document.getElementById("startBtn").onclick = () => {
+        document.getElementById("projectSection").scrollIntoView({ behavior: "smooth" });
+    };
+
+    // ================== THEME TOGGLE ====================
+
+    const toggleBtn = document.getElementById("themeToggle");
+    const themeIcon = document.getElementById("themeIcon");
+
+    // Icon Base64
+    const iconDark = "./toggle_on.png";
+
+    const iconLight = "./toggle_off.png";
+
+    // Update icon based on theme
+    function updateIcon() {
+        themeIcon.src = document.body.classList.contains("dark") ? iconLight : iconDark;
+    }
+
+    // Load theme
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") document.body.classList.add("dark");
+    updateIcon();
+
+    // Toggle theme
+    toggleBtn.onclick = () => {
+        document.body.classList.toggle("dark");
+
+        localStorage.setItem("theme",
+            document.body.classList.contains("dark") ? "dark" : "light"
+        );
+
+        updateIcon();
+    };
+    </script>
+
+</body>
+</html>
